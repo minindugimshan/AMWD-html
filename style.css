@@ -1,0 +1,30 @@
+.box-modal{
+    background-color: aqua;
+    width: 150px;
+    border: 20px; color: black;
+    padding: 40px;
+    margin: 30px;
+}
+.static{
+    position: static;
+    top: 100px;
+}
+.relative{
+    position: relative;
+    top: 20px;
+    right: 20px;
+}
+.absolute{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.fixed{
+    border: 2px; color: blueviolet;
+    padding: 20px;
+    
+    background-color: aquamarine;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+}

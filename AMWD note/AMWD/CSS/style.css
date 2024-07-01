@@ -1,0 +1,68 @@
+#sample {
+    background-color: darkgreen;
+    color: white;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Selecter */
+/* Property  */
+/* value  */
+
+/* id  */
+#name {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+/* class  */
+.amwd {
+    background-color: aqua;
+}
+
+.amwd-font {
+    color: rgb(201, 3, 3);
+}
+
+/* type  */
+h4 {
+    background-color: blueviolet;
+}
+
+/* universal  */
+
+/* * {
+    background-color: brown;
+} */
+
+/* Child  */
+div > h5 {
+    background-color: darkgoldenrod;
+}
+
+.box-modal {
+    background-color: aqua;
+    width: 150px;
+
+    border: 20px solid black;
+    padding: 40px;
+    margin: 30px;
+}
+
+#amwd {
+    background-color: red;
+}
+
+.amwd-1 {
+    background-color: chartreuse !important;
+}
+
+.units {
+    width: 70vw;
+    height: 50vh;
+    border: 1px solid black;
+}

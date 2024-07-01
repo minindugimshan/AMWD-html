@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+}
+/* .content{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    position: relative;
+    animation-name: sample;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+@keyframes sample{
+    /* from{background-color: blue;}
+    to{background-color: cadetblue;} */
+    /* 0% {background-color: blue; left: 0; top: 0;}
+    25% {background-color: rgb(251, 255, 0);left: 400px; top: 0;}
+    50% {background-color: rgb(255, 0, 25);left: 400px; top: 400px;}
+    75% {background-color: rgb(0, 255, 55);left: 0; top: 400px;}
+    100% {background-color: rgb(255, 0, 0);left: 0; top: 0;}
+} */ 
+
+
+.content{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    transition: width 5s , height 5s , background-color 5s;
+
+}
+.content:hover{
+    background-color: aquamarine;
+    width: 300px;
+    height: 300px;
+    transform: rotate(90deg);
+}

@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+}
+.content {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    transition: width 5s, height 5s, background-color 3s, transform 3s;
+}
+
+.content:hover {
+    background-color: blue;
+    width: 300px;
+    height: 300px;
+    transform: rotate(90deg);
+}

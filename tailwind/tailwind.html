@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+      <h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
+  <br><br>
+  <!-- Using utilities: -->
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Button
+  </button>
+  
+  <!-- Extracting component classes: -->
+  <button class="btn btn-blue">
+    Button
+  </button>
+  
+  <style>
+    .btn {
+      @apply font-bold py-2 px-4 rounded;
+    }
+    .btn-blue {
+      @apply bg-blue-500 text-white;
+    }
+    .btn-blue:hover {
+      @apply bg-blue-700;
+    }
+  </style>
+</body>
+</html>

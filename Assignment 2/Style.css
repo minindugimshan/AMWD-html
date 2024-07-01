@@ -1,0 +1,57 @@
+h3{
+    color: burlywood;
+    font-family: Arial;
+}
+.Navbar{
+    background-color: rgb(194, 80, 80);
+    
+}
+.Home,.About,.Contact,.Menu{
+    background-color: rgb(194, 80, 80);
+    color: aliceblue;
+    border-radius: 5px ;
+    border: 1px solid white; 
+    margin: 20px;
+    padding-inline: 15px;
+    
+}
+.content{
+    
+    border: 2px solid;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    margin: auto;
+    padding-right: 30%;
+    padding-left: 12px;
+}
+
+.form{
+    padding-left: 40%;
+}
+
+.footer{
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: gray;
+}
+.User , .Shopping , .Sitemap{
+    font-family: Arial;
+    border: 1px solid white;
+    border-radius: 6px;
+    background-color: rgb(194, 79, 79);
+    margin: 40px;
+    padding: 20px;
+    padding-top: 4px;
+    color: white; 
+    text-align: left;
+}
+.dog{
+    padding-left: 40%;
+    width: 20%;
+    height: auto;
+}
+.usr , .shp ,.site{
+    color: white;
+}
