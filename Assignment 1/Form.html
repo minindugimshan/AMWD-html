@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -51,4 +51,434 @@
     </fieldset>
 
 </body>
+</html> -->
+
+
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Management System</h1>
+    <form id="studentForm">
+        <form id="studentDetails">
+                    Student Name <input type="text" id="name" name="name"><br><br>
+                    Date of Birth <input type="date" id="dob" name="dob"><br><br>
+                    Address <input type="text" id="address" name="address"><br><br>
+                    Contact <input type="text" id="contact" name="contact"><br>
+        </form>
+        <button type="button" id="addButton">Add Student</button>
+        <button type="button" id="deleteButton" disabled>Delete Selected</button>
+    </form>
+    <table id="studentList">
+        
+            <fieldset class="details">
+                <div>
+                Student Namebr <br><br>
+                Date of Birth <br><br>
+                Course <br><br>
+                Contact <br><br>
+                Action <br><br>
+            </div>
+            </fieldset>
+    
+
+    <script>
+        const studentList = document.getElementById('studentList').getElementsByTagName('tbody')[0];
+        const studentForm = document.getElementById('studentForm');
+        const addButton = document.getElementById('addButton');
+        const deleteButton = document.getElementById('deleteButton');
+        let students = []; // Array to store student details
+
+        addButton.addEventListener('click', function() {
+            // Get student details from the form
+            const name = document.getElementById('name').value;
+            const dob = document.getElementById('dob').value;
+            const course = document.getElementById('course').value;
+            const contact = document.getElementById('contact').value;
+
+            // Validate student details (optional)
+
+            // Add student details to the students array
+            students.push({ name, dob, course, contact });
+
+            // Clear the form
+            studentForm.reset();
+
+            // Display student list
+            displayStudentList();
+        });
+
+        deleteButton.addEventListener('click', function() {
+            const selectedRowIndex = studentList.getElementsByTagName('tr').length - 1;
+            if (selectedRowIndex > 0) {
+                students.splice(selectedRowIndex - 1, 1); // Remove selected student from the array
+                studentList.removeChild(studentList.rows[selectedRowIndex]);
+            }
+
+            if (students.length === 0) {
+                deleteButton.disabled = true;
+            }
+        });
+
+        function displayStudentList() {
+            studentList.innerHTML = ''; // Clear the student list table body
+
+            students.forEach((student, index) => {
+                const row = studentList.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                const cell4 = row.insertCell(3);
+                const cell5 = row.insertCell(4);
+
+                cell1.textContent = student.name;
+                cell2.textContent = student.dob;
+                cell3.textContent = student.course;
+                cell4.textContent = student.contact;
+                cell5.innerHTML = `<button onclick="selectStudent(${index})">Select</button>`;
+            });
+
+            deleteButton.disabled = students.length === 0; // Disable delete button if there are no students
+        }
+
+        function selectStudent(index) {
+            // Highlight the selected row
+            for (let i = 1; i < studentList.rows.length; i++) {
+                studentList.rows[i].classList.remove('selected');
+            }
+            studentList.rows[index + 1].classList.add('selected');
+
+            // Enable the delete button
+            deleteButton.disabled = false;
+        }
+    </script>
+</body> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        .student-card {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .student-card.selected {
+            background-color: yellow;
+        }
+        fieldset {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Management System</h1>
+    <form id="studentForm">
+        <fieldset id="studentDetails">
+            <legend>Enter Student Details</legend>
+            <label>Student Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label>Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br><br>
+            <label>Address:</label>
+            <input type="text" id="address" name="address" required><br><br>
+            <label>Contact:</label>
+            <input type="text" id="contact" name="contact" required><br><br>
+            <button type="button" id="addButton">Add Student</button>
+        </fieldset>
+        <button type="button" id="deleteButton" disabled>Delete Selected</button>
+    </form>
+
+    <div id="studentListContainer">
+        <fieldset>
+            <legend>Student List</legend>
+            <div id="studentList"></div>
+        </fieldset>
+    </div>
+
+    <script>
+        const studentList = document.getElementById('studentList');
+        const addButton = document.getElementById('addButton');
+        const deleteButton = document.getElementById('deleteButton');
+        let students = []; // Array to store student details
+
+        addButton.addEventListener('click', function() {
+            // Get student details from the form
+            const name = document.getElementById('name').value;
+            const dob = document.getElementById('dob').value;
+            const address = document.getElementById('address').value;
+            const contact = document.getElementById('contact').value;
+
+            // Validate student details (optional)
+            if (!name || !dob || !address || !contact) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            // Add student details to the students array
+            students.push({ name, dob, address, contact });
+
+            // Clear the form
+            document.getElementById('name').value = '';
+            document.getElementById('dob').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('contact').value = '';
+
+            // Display student list
+            displayStudentList();
+        });
+
+        deleteButton.addEventListener('click', function() {
+            const selectedCard = document.querySelector('.student-card.selected');
+            if (selectedCard) {
+                const selectedCardIndex = Array.from(studentList.children).indexOf(selectedCard);
+                students.splice(selectedCardIndex, 1); // Remove selected student from the array
+                displayStudentList(); // Refresh the list
+            }
+
+            if (students.length === 0) {
+                deleteButton.disabled = true;
+            }
+        });
+
+        function displayStudentList() {
+            studentList.innerHTML = ''; // Clear the student list
+
+            students.forEach((student, index) => {
+                const studentCard = document.createElement('div');
+                studentCard.className = 'student-card';
+                studentCard.innerHTML = `
+                    <div><strong>Student Name:</strong> ${student.name}</div>
+                    <div><strong>Date of Birth:</strong> ${student.dob}</div>
+                    <div><strong>Address:</strong> ${student.address}</div>
+                    <div><strong>Contact:</strong> ${student.contact}</div>
+                    <button onclick="selectStudent(${index})">Select</button>
+                `;
+                studentList.appendChild(studentCard);
+            });
+
+            deleteButton.disabled = students.length === 0; // Disable delete button if there are no students
+        }
+
+        window.selectStudent = function(index) {
+            // Highlight the selected card
+            const studentCards = document.querySelectorAll('.student-card');
+            studentCards.forEach(card => card.classList.remove('selected'));
+            studentCards[index].classList.add('selected');
+
+            // Enable the delete button
+            deleteButton.disabled = false;
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        .student-card {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .student-card.selected {
+            background-color: yellow;
+        }
+        fieldset {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Management System</h1>
+    <form id="studentForm">
+        <button type="button" id="showFormButton">Add Student</button>
+        <fieldset id="studentDetails">
+            <legend>Enter Student Details</legend>
+            <label>Student Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label>Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br><br>
+            <label>Address:</label>
+            <input type="text" id="address" name="address" required><br><br>
+            <label>Contact:</label>
+            <input type="text" id="contact" name="contact" required><br><br>
+            <button type="button" id="addButton">Add Student</button>
+        </fieldset>
+        <button type="button" id="deleteButton" disabled>Delete Selected</button>
+    </form>
+
+    <div id="studentListContainer">
+        <fieldset>
+            <legend>Student List</legend>
+            <table id="studentList">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Date of Birth</th>
+                        <th>Address</th>
+                        <th>Contact</th>
+                        
+                    </tr>
+                </thead>
+            </table>
+        </fieldset>
+    </div>
+
+    <script>
+        const studentList = document.getElementById('studentList');
+        const studentForm = document.getElementById('studentForm');
+        const addButton = document.getElementById('addButton');
+        const deleteButton = document.getElementById('deleteButton');
+        const showFormButton = document.getElementById('showFormButton');
+        let students = []; // Array to store student details
+
+        showFormButton.addEventListener('click', function() {
+            studentForm.style.display = 'block';
+            showFormButton.style.display = 'none';
+        });
+        addButton.addEventListener('click', function() {
+            // Get student details from the form
+            const name = document.getElementById('name').value;
+            const dob = document.getElementById('dob').value;
+            const address = document.getElementById('address').value;
+            const contact = document.getElementById('contact').value;
+
+            console.log(`Student Details: Name: ${name}, DOB: ${dob}, Address: ${address}, Contact: ${contact}`);
+
+            // Validate student details (optional)
+            if (!name || !dob || !address || !contact) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            // Add student details to the students array
+            students.push({ name, dob, address, contact });
+
+            // Clear the form
+            document.getElementById('name').value = '';
+            document.getElementById('dob').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('contact').value = '';
+
+            // Display student list
+            displayStudentList();
+        // });
+
+         // Hide the form and show the "Add Student" button again
+         studentForm.style.display = 'none';
+            showFormButton.style.display = 'block';
+        });
+
+        // deleteButton.addEventListener('click', function() {
+        //     const selectedCard = document.querySelector('.student-card.selected');
+        //     if (selectedCard) {
+        //         const selectedCardIndex = Array.from(studentList.children).indexOf(selectedCard);
+        //         students.splice(selectedCardIndex, 1); // Remove selected student from the array
+        //         displayStudentList(); // Refresh the list
+        //     }
+
+        //     if (students.length === 0) {
+        //         deleteButton.disabled = true;
+        //     }
+        // });
+
+        // function displayStudentList() {
+        //     studentList.innerHTML = ''; // Clear the student list
+
+        //     students.forEach((student, index) => {
+        //         const studentCard = document.createElement('div');
+        //         studentCard.className = 'student-card';
+        //         studentCard.innerHTML = `
+        //             <div><strong>Student Name:</strong> ${student.name}</div>
+        //             <div><strong>Date of Birth:</strong> ${student.dob}</div>
+        //             <div><strong>Address:</strong> ${student.address}</div>
+        //             <div><strong>Contact:</strong> ${student.contact}</div>
+        //             <button onclick="selectStudent(${index})">Select</button>
+        //         `;
+        //         studentList.appendChild(studentCard);
+        //     });
+
+        //     deleteButton.disabled = students.length === 0; // Disable delete button if there are no students
+        // }
+
+        // window.selectStudent = function(index) {
+        //     // Highlight the selected card
+        //     const studentCards = document.querySelectorAll('.student-card');
+        //     studentCards.forEach(card => card.classList.remove('selected'));
+        //     studentCards[index].classList.add('selected');
+
+        //     // Enable the delete button
+        //     deleteButton.disabled = false;
+        // }
+        deleteButton.addEventListener('click', function() {
+            const selectedRowIndex = Array.from(studentList.rows).findIndex(row => row.classList.contains('selected'));
+            if (selectedRowIndex > -1) {
+                students.splice(selectedRowIndex, 1); // Remove selected student from the array
+                studentList.removeChild(studentList.rows[selectedRowIndex]);
+            }
+
+            if (students.length === 0) {
+                deleteButton.disabled = true;
+            }
+        });
+
+        function displayStudentList() {
+            studentList.innerHTML = ''; // Clear the student list table body
+
+            students.forEach((student, index) => {
+                const row = studentList.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                const cell4 = row.insertCell(3);
+                const cell5 = row.insertCell(4);
+
+                cell1.textContent = student.name;
+                cell2.textContent = student.dob;
+                cell3.textContent = student.address;
+                cell4.textContent = student.contact;
+                cell5.innerHTML = `<button onclick="selectStudent(${index})">Select</button>`;
+            });
+
+            deleteButton.disabled = students.length === 0; // Disable delete button if there are no students
+        }
+
+        function selectStudent(index) {
+            // Highlight the selected row
+            for (let i = 0; i < studentList.rows.length; i++) {
+                studentList.rows[i].classList.remove('selected');
+            }
+            studentList.rows[index].classList.add('selected');
+
+            // Enable the delete button
+            deleteButton.disabled = false;
+        }
+
+    </script>
+</body>
 </html>
+
+
